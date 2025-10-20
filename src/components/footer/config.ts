@@ -1,12 +1,4 @@
-const footer: { title: string; href: string }[] = [
-  {
-    title: "Blog",
-    href: "https://abhijitzende.hashnode.dev/",
-  },
-  {
-    title: "Newsletter",
-    href: "https://abhijitzende.hashnode.dev/",
-  },
-];
+// src/components/footer/config.ts
 
-export { footer };
+// (Footer links removed — not used anymore)
+export const footer = [];

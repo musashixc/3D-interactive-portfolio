@@ -1,4 +1,4 @@
-import { EmailTemplate } from "@/components/email-template";
+import { EmailTemplate } from "../../../components/email-template";
 import { config } from "@/data/config";
 import { Resend } from "resend";
 import { z } from "zod";

@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import React from "react";
 import { Button } from "../ui/button";
-import { File, Github, Linkedin } from "lucide-react";
+import { File } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
@@ -11,7 +11,6 @@ import {
 import { usePreloader } from "../preloader";
 import { BlurIn, BoxReveal } from "../reveal-animations";
 import ScrollDownIcon from "../scroll-down-icon";
-import { SiGithub, SiLinkedin } from "react-icons/si";
 import { config } from "@/data/config";
 
 const HeroSection = () => {
@@ -54,10 +53,6 @@ const HeroSection = () => {
                         {config.author.split(" ")[0]}
                         <br className="md:block hiidden" />
                         {config.author.split(" ")[1]}
-                        {/* PLEASE hello??
-
-                        <br className="md:block hiidden" />
-                        UNMUTE ME 😢😢 */}
                       </h1>
                     </TooltipTrigger>
                     <TooltipContent
@@ -68,7 +63,7 @@ const HeroSection = () => {
                     </TooltipContent>
                   </Tooltip>
                 </BlurIn>
-                {/* <div className="md:block hidden bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0 w-screen h-px animate-fade-right animate-glow" /> */}
+
                 <BlurIn delay={1.2}>
                   <p
                     className={cn(
@@ -80,60 +75,43 @@ const HeroSection = () => {
                   </p>
                 </BlurIn>
               </div>
-              <div className="mt-8 md:ml-2 flex flex-col gap-3">
-                <Link
-                  href={
-                    "https://drive.google.com/file/d/1vjtWfqYGMIMK_rlBnmDEpKco9MiEaQss/view"
-                  }
-                  target="_blank"
-                  className="flex-1"
-                >
-                  <BoxReveal delay={2} width="100%" >
-                    <Button className="flex items-center gap-2 w-full">
-                      <File size={24} />
-                      <p>Resume</p>
-                    </Button>
-                  </BoxReveal>
-                </Link>
-                <div className="md:self-start flex gap-3">
-                  <Tooltip delayDuration={300}>
-                    <TooltipTrigger asChild>
-                      <Link href={"#contact"}>
-                        <Button
-                          variant={"outline"}
-                          className="block w-full overflow-hidden"
-                        >
-                          Hire Me
-                        </Button>
-                      </Link>
-                    </TooltipTrigger>
-                    <TooltipContent side="bottom">
-                      <p>pls 🥹 🙏</p>
-                    </TooltipContent>
-                  </Tooltip>
-                  <Link
-                    href={config.social.github}
-                    target="_blank"
-                  >
-                    <Button variant={"outline"}>
-                      <SiGithub size={24} />
-                    </Button>
-                  </Link>
-                  <Link
-                    href={config.social.linkedin}
-                    target="_blank"
-                  >
-                    <Button variant={"outline"}>
-                      <SiLinkedin size={24} />
-                    </Button>
-                  </Link>
-                </div>
+
+              <div className="mt-8 md:ml-2 flex flex-col gap-3 w-full max-w-sm">
+                <BoxReveal delay={2} width="100%">
+  <Link
+    href="https://www.figma.com/proto/eatsxK8tqn7KXKV7iqTZbS/Untitled?node-id=1-4095&p=f&t=4BlIHkPd2up3kYpQ-8&scaling=contain&content-scaling=fixed&page-id=0%3A1&hide-ui=1"
+    target="_blank"
+  >
+    <Button className="flex items-center gap-2 w-full">
+      <File size={24} />
+      <p>About</p>
+    </Button>
+  </Link>
+</BoxReveal>
+
+
+                <Tooltip delayDuration={300}>
+                  <TooltipTrigger asChild>
+                    <Link href={"#contact"} className="w-full">
+                      <Button
+                        variant={"outline"}
+                        className="w-full py-6 text-lg"
+                      >
+                        Hire Me
+                      </Button>
+                    </Link>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom">
+                    <p>pls 🥹 🙏</p>
+                  </TooltipContent>
+                </Tooltip>
               </div>
             </>
           )}
         </div>
         <div className="grid col-span-1"></div>
       </div>
+
       <div className="absolute bottom-10 left-[50%] translate-x-[-50%]">
         <ScrollDownIcon />
       </div>

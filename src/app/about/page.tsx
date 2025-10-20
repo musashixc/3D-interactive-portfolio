@@ -2,25 +2,22 @@
 import React, { useEffect, useState } from "react";
 import { DiMongodb, DiNginx, DiNpm, DiPostgresql, DiVim } from "react-icons/di";
 import {
-  FaAws,
+  FaBlender,
   FaCss3,
-  FaDocker,
   FaEnvelope,
   FaGit,
-  FaGithub,
   FaHtml5,
-  FaLinkedin,
   FaLinux,
   FaNodeJs,
   FaPhone,
   FaReact,
   FaVuejs,
   FaYarn,
+  FaInstagram,
 } from "react-icons/fa6";
 import {
   RiFirebaseFill,
   RiJavascriptFill,
-  RiNextjsFill,
   RiTailwindCssFill,
 } from "react-icons/ri";
 import {
@@ -30,12 +27,9 @@ import {
   SiPm2,
   SiPrettier,
   SiTypescript,
-  SiVercel,
   SiVisualstudiocode,
 } from "react-icons/si";
 import { VscCode } from "react-icons/vsc";
-
-// @ts-ignore
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import { TbTerminal2 } from "react-icons/tb";
@@ -43,195 +37,178 @@ import { TbTerminal2 } from "react-icons/tb";
 const CONTACT_LINKS = [
   {
     name: "Email",
-    content: "abhijitzende75@gmail",
-    href: "mailto:abhijitzende75@gmail.com",
+    content: "musashiixc@gmail.com",
+    href: "mailto:musashiixc@gmail.com",
     icon: <FaEnvelope height={"50px"} />,
   },
   {
     name: "Phone",
     content: "1234567890",
-    href: "tel:8308509180",
+    href: "tel:1234567890",
     icon: <FaPhone height={"50px"} />,
   },
   {
-    name: "LinkedIn",
-    href: "https://www.linkedin.com/in/zende-abhijit/",
-    content: "/zende-abhijit",
-    icon: <FaLinkedin height={"50px"} />,
-  },
-  {
-    name: "GitHub",
-    href: "https://github.com/Abhiz2411",
-    content: "/naresh-khatri",
-    icon: <FaGithub height={"50px"} />,
+    name: "Instagram",
+    href: "https://www.instagram.com/daddydoom0202?igsh=MTNjMHJkNHo4MzVuZQ==",
+    content: "@daddydoom0202",
+    icon: <FaInstagram height={"50px"} />,
   },
 ];
 
 const TOOLS = [
   {
     name: "JavaScript",
-    content: "JavaScript is a high-level, interpreted programming language",
+    content: "High-level programming language for the web.",
     icon: <SiJavascript size={"50px"} color={"#f0db4f"} />,
     color: "#f0db4f",
   },
   {
     name: "TypeScript",
-    content: "TypeScript is a superset of JavaScript that compiles to plain JS",
+    content: "Superset of JavaScript adding static typing.",
     icon: <SiTypescript size={"50px"} color={"#007acc"} />,
     color: "#007acc",
   },
   {
     name: "HTML",
-    content: "Next.js is a React framework for production",
+    content: "The structure of the web.",
     icon: <FaHtml5 size={"50px"} color="#e34c26" />,
     color: "#e34c26",
   },
   {
     name: "CSS",
-    content: "Next.js is a React framework for production",
+    content: "Brings beauty to the web.",
     icon: <FaCss3 size={"50px"} color="#563d7c" />,
     color: "#563d7c",
   },
   {
-    name: "Nodejs",
-    content: "Next.js is a React framework for production",
+    name: "Node.js",
+    content: "JavaScript runtime for backend development.",
     icon: <FaNodeJs size={"50px"} color="#6cc24a" />,
     color: "#6cc24a",
   },
   {
     name: "React.js",
-    content: "Next.js is a React framework for production",
+    content: "UI library for building interactive interfaces.",
     icon: <FaReact size={"50px"} color="#61dafb" />,
     color: "#61dafb",
   },
   {
-    name: "Docker",
-    content: "Next.js is a React framework for production",
-    icon: <FaDocker size={"50px"} color="#2496ed" />,
-    color: "#2496ed",
+    name: "Blender",
+    content: "Forging 3D worlds where imagination meets geometry 🌀🧱.",
+    icon: <FaBlender size={"50px"} color="#f5792a" />,
+    color: "#f5792a",
+  },
+  {
+    name: "Lua",
+    content: "Lightweight scripting language, great for games.",
+    icon: <VscCode size={"50px"} color="#0000CD" />,
+    color: "#0000CD",
   },
   {
     name: "NginX",
-    content: "Next.js is a React framework for production",
+    content: "High-performance web server and reverse proxy.",
     icon: <DiNginx size={"50px"} color="#008000" />,
     color: "#008000",
   },
   {
     name: "Vue.js",
-    content: "Next.js is a React framework for production",
+    content: "Progressive framework for building UIs.",
     icon: <FaVuejs size={"50px"} color="#41b883" />,
     color: "#41b883",
   },
   {
     name: "Express.js",
-    content: "Next.js is a React framework for production",
+    content: "Minimal backend framework for Node.js.",
     icon: <SiExpress size={"50px"} color="#fff" />,
     color: "#000000",
   },
   {
     name: "PostgreSQL",
-    content: "Next.js is a React framework for production",
+    content: "Powerful open-source SQL database.",
     icon: <DiPostgresql size={"50px"} color="#336791" />,
     color: "#336791",
   },
   {
     name: "MongoDB",
-    content: "Next.js is a React framework for production",
+    content: "NoSQL database for modern applications.",
     icon: <DiMongodb size={"50px"} color="#4db33d" />,
     color: "#4db33d",
   },
   {
     name: "Tailwind CSS",
-    content: "Next.js is a React framework for production",
+    content: "Utility-first CSS framework for rapid UI development.",
     icon: <RiTailwindCssFill size={"50px"} color="#06b6d4" />,
     color: "#06b6d4",
   },
   {
     name: "Firebase",
-    content: "Next.js is a React framework for production",
+    content: "App development platform for authentication & hosting.",
     icon: <RiFirebaseFill size={"50px"} color="#FFCA28" />,
     color: "#FFCA28",
   },
   {
     name: "Git",
-    content: "Next.js is a React framework for production",
+    content: "Version control system for tracking code changes.",
     icon: <FaGit size={"50px"} color="#f05032" />,
     color: "#f05032",
   },
   {
-    name: "GitHub",
-    content: "Next.js is a React framework for production",
-    icon: <FaGithub size={"50px"} color="#fff" />,
-    color: "#000000",
-  },
-  {
     name: "VS Code",
-    content: "Next.js is a React framework for production",
+    content: "Developer-friendly code editor.",
     icon: <SiVisualstudiocode size={"50px"} color="#007acc" />,
     color: "#007acc",
   },
   {
     name: "VIM",
-    content: "Next.js is a React framework for production",
-    icon: <DiVim size={"50px"} color="#fff" />,
-    color: "#000000",
+    content: "Classic and powerful text editor for pros.",
+    icon: <DiVim size={"50px"} color="#019733" />,
+    color: "#019733",
   },
   {
     name: "Prettier",
-    content: "Next.js is a React framework for production",
+    content: "Code formatter for consistent style.",
     icon: <SiPrettier size={"50px"} color="#f7b93c" />,
     color: "#f7b93c",
   },
   {
     name: "NPM",
-    content: "Next.js is a React framework for production",
+    content: "Package manager for Node.js.",
     icon: <DiNpm size={"50px"} color="#CB3837" />,
     color: "#CB3837",
   },
   {
     name: "Yarn",
-    content: "Next.js is a React framework for production",
+    content: "Alternative package manager to npm.",
     icon: <FaYarn size={"50px"} color="#2C8EBB" />,
     color: "#2C8EBB",
   },
   {
-    name: "Vercel",
-    content: "Next.js is a React framework for production",
-    icon: <SiVercel size={"50px"} color="#fff" />,
-    color: "#000000",
-  },
-  {
     name: "Linux",
-    content: "Next.js is a React framework for production",
+    content: "Powerful and open-source operating system.",
     icon: <FaLinux size={"50px"} color="#fff" />,
     color: "#000000",
   },
   {
     name: "Kubuntu",
-    content: "Next.js is a React framework for production",
-    // give me correct color for  kubuntu
+    content: "Linux distro with a beautiful KDE desktop.",
     icon: <SiKubuntu size={"50px"} color="#0077C4" />,
-    color: "#000000",
+    color: "#0077C4",
   },
   {
     name: "Terminal",
-    content: "Next.js is a React framework for production",
+    content: "Where true power users live.",
     icon: <TbTerminal2 size={"50px"} color="#fff" />,
-    color: "#000000",
-  },
-  {
-    name: "AWS",
-    content: "Next.js is a React framework for production",
-    icon: <FaAws size={"50px"} color="#3f51b5" />,
     color: "#000000",
   },
 ];
 
 function Page() {
   const [toolsLoaded, setToolsLoaded] = useState(false);
+
   useEffect(() => {
     setToolsLoaded(true);
   }, []);
+
   return (
     <div className="container mx-auto px-4 md:px-[50px] xl:px-[200px] text-zinc-300 pt-20 pb-20">
       <div className="flex flex-col lg:flex-row gap-5">
@@ -251,7 +228,7 @@ function Page() {
                 />
               </div>
               <div className="flex flex-col gap-3 lg:items-center ml-10 md:ml-20 lg:ml-0">
-                <p className="text-center text-xl">Naresh Khatri</p>
+                <p className="text-center text-xl">Musashi</p>
                 <div className="text-xs bg-zinc-700 w-fit px-3 py-1 rounded-full">
                   Web Developer
                 </div>
@@ -287,15 +264,13 @@ function Page() {
           >
             <h1 className="text-3xl mb-10 lg:md-20">About me</h1>
             <p className="mb-10 text-roboto">
-              Hey there! I&apos;m Abhijit, a Comp. Sci. Engineer with 1.5 year experience in Devlopment, DevOps and 
-              Database management with hands-on experience in deploying & automating workflows, and 
-              collaborating with foreign clients. Strong analytical skills,effective communication,
-              and a team-oriented approach to driving process improvements and delivering results.
+              Hey there! I&apos;m Musashi, a self-taught developer passionate about 3D art,
+              game design, and web development. I love blending creative worlds with code,
+              building experiences that feel alive — from interactive portfolios to digital worlds.
             </p>
             <p className="mb-10">
-              When I&apos;m not coding, you can find me [Your
-              Interests/Hobbies], exploring new technologies, or sipping coffee
-              while brainstorming my next project.
+              When I&apos;m not coding, I&apos;m sculpting ideas in Blender, studying samurai philosophy,
+              or experimenting with design and animation.
             </p>
             <h1 className="text-3xl mb-10 lg:md-20">Stuff I use</h1>
             <div className="mb-5">
@@ -315,13 +290,13 @@ function Page() {
                     easing: "cubic-bezier(0.25, 1, 0.5, 1)",
                     arrows: false,
                   }}
-                  aria-label="My Favorite Images"
+                  aria-label="Tools Carousel"
                 >
                   {TOOLS.reverse().map((tool) => (
                     <SplideSlide key={tool.name}>
                       <div
-                        key={tool.name}
                         className="w-fit p-2 border-[.5px] border-zinc-600 rounded-md"
+                        title={tool.name}
                       >
                         {tool.icon}
                       </div>
@@ -330,34 +305,6 @@ function Page() {
                 </Splide>
               )}
             </div>
-            {/* <div className="">
-              <Splide
-                options={{
-                  type: "loop",
-                  interval: 2000,
-                  autoplay: true,
-                  pagination: false,
-                  speed: 3000,
-                  perPage: 5,
-                  perMove: 1,
-                  rewind: true,
-                  easing: "cubic-bezier(0.25, 1, 0.5, 1)",
-                  arrows: false,
-                }}
-                aria-label="My Favorite Images"
-              >
-                {TOOLS.map((tool) => (
-                  <SplideSlide key={tool.name}>
-                    <div
-                      key={tool.name}
-                      className="w-fit p-2 border-[.5px] border-zinc-600 rounded-md"
-                    >
-                      {tool.icon}
-                    </div>
-                  </SplideSlide>
-                ))}
-              </Splide>
-            </div> */}
           </div>
         </main>
       </div>
