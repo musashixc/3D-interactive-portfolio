@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { Resend } from "resend";
 import { config } from "@/data/config";
 
-// Validate email input
 const EmailSchema = z.object({
   fullName: z.string().min(2, "Full name is invalid!"),
   email: z.string().email({ message: "Email is invalid!" }),
@@ -23,28 +23,32 @@ export async function POST(req: Request) {
 
     const { fullName, email, message } = result.data;
 
-    // ✅ Lazy import Resend only when running on server (prevents build-time crash)
-    const { Resend } = await import("resend");
     const resendApiKey = process.env.RESEND_API_KEY;
-
     if (!resendApiKey) {
-      console.warn("Missing RESEND_API_KEY, skipping email send.");
-      return NextResponse.json({
-        success: false,
-        error: "Missing email API key (deployment-safe fallback).",
-      });
+      console.warn("Missing RESEND_API_KEY");
+      return NextResponse.json(
+        { error: "Missing API key" },
+        { status: 500 }
+      );
     }
 
     const resend = new Resend(resendApiKey);
 
-    // Lazy import the email template to avoid build-time dependency issues
-    const { EmailTemplate } = await import("@/components/email-template");
+    // Use plain HTML instead of React component to avoid client imports
+    const html = `
+      <div style="font-family: sans-serif;">
+        <h2>New Contact Message</h2>
+        <p><b>Name:</b> ${fullName}</p>
+        <p><b>Email:</b> ${email}</p>
+        <p><b>Message:</b><br/>${message}</p>
+      </div>
+    `;
 
     const { data, error } = await resend.emails.send({
       from: "Portfolio <onboarding@resend.dev>",
       to: [config.email],
       subject: `Contact from ${fullName}`,
-      react: EmailTemplate({ fullName, email, message }),
+      html,
     });
 
     if (error) throw error;
